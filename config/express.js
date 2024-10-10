@@ -2,20 +2,33 @@
 const express = require("express");
 const config = require("config");
 const app = express();
+const webRoutes = require("../routes/web");
+const apiRoutes = require("../routes/api");
+
 // Guardando dentro da variável app uma propriedade
 app.set("port", process.env.PORT || config.get("server.port"));
-// Request é o que vem do navegador
-// Response é o que manda para o navegador
-app.get('/', (request, response) => {
-    response.send(`
-        <html>
-            <head>
-            </head>
-            <body>
-                <h1>Olá mundo</h1>
-            </body>
-        </html>
-`);
-});
+
+app.use(webRoutes);
+app.use(apiRoutes);
+
 // exporta o objeto app configurado
 module.exports = app;
+
+
+
+
+
+
+
+
+
+
+
+
+
+// const DataBase = require("./DataBase");
+
+// app.get('/produto', async (request, response) => {
+//     const resposta = await DataBase.executeSQLQuery("SELECT * FROM Produto WHERE id = ?", [10]);
+//     response.send(resposta);
+// });
