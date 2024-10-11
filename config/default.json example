@@ -4,8 +4,8 @@
     },
     "db": {
         "host": "localhost",
-        "database": "database_name",
+        "database": "fornatto_db_2",
         "user": "root",
-        "password": "pass"
+        "password": ""
     }
 }
