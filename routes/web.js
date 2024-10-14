@@ -8,8 +8,8 @@ router.get("/", (request, response) => {
 
 router.get("/produto", async (request, response) => {
     const produtos = await DataBase.executeSQLQuery("SELECT * FROM Produto");
-    response.send(produtos);
-    //response.render("Produto/index", { produtos: produtos });
+    //response.send(produtos);
+    response.render("Produto/index", { produtos: produtos });
 });
 
 router.get("/tipoproduto", async (request, response) => {
