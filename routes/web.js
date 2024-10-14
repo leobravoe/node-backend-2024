@@ -6,6 +6,10 @@ router.get("/", (request, response) => {
     response.render("index");
 });
 
+router.get("/recurso", (request, response) => {
+    response.render("Recurso/index");
+});
+
 router.get("/produto", async (request, response) => {
     const produtos = await DataBase.executeSQLQuery("SELECT * FROM Produto");
     //response.send(produtos);
