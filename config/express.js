@@ -10,6 +10,8 @@ app.set("port", process.env.PORT || config.get("server.port"));
 // Seto a template engine
 app.set("view engine", "hbs");
 
+
+app.use(express.static("./public"));
 // Utilizo um arquivo externo para definir as rotas WEB
 app.use(webRoutes);
 // Utilizo um arquivo externo para definir as rotas API
