@@ -8,7 +8,9 @@ const apiRoutes = require("../routes/api");
 // Guardando dentro da variável app uma propriedade
 app.set("port", process.env.PORT || config.get("server.port"));
 
+// Utilizo um arquivo externo para definir as rotas WEB
 app.use(webRoutes);
+// Utilizo um arquivo externo para definir as rotas API
 app.use(apiRoutes);
 
 // exporta o objeto app configurado
