@@ -6,8 +6,8 @@ router.get("/", (request, response) => {
     response.send("Seja bem vindo");
 });
 
-router.get("/produto", (request, response) => {
-    const result = DataBase.executeSQLQuery("SELECT * FROM Produto");
+router.get("/produto", async (request, response) => {
+    const result = await DataBase.executeSQLQuery("SELECT * FROM Produto");
     response.send(result);
 });
 
