@@ -7,6 +7,8 @@ const apiRoutes = require("../routes/api");
 
 // Guardando dentro da variável app uma propriedade
 app.set("port", process.env.PORT || config.get("server.port"));
+// Seto a template engine
+app.set("view engine", "hbs");
 
 // Utilizo um arquivo externo para definir as rotas WEB
 app.use(webRoutes);

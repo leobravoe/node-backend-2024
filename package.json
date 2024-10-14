@@ -12,6 +12,7 @@
   "dependencies": {
     "config": "^3.3.12",
     "express": "^4.21.1",
+    "hbs": "^4.2.0",
     "mysql2": "^3.11.3"
   },
   "devDependencies": {

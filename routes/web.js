@@ -7,8 +7,8 @@ router.get("/", (request, response) => {
 });
 
 router.get("/produto", async (request, response) => {
-    const result = await DataBase.executeSQLQuery("SELECT * FROM Produto");
-    response.send(result);
+    // const result = await DataBase.executeSQLQuery("SELECT * FROM Produto");
+    response.render("Produto/index");
 });
 
 module.exports = router;
