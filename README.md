@@ -1,4 +1,4 @@
-git clone
+git clone https://github.com/leobravoe/node-backend-2024.git
 
 copy '.\config\default.json example' '.\config\default.json'
 
