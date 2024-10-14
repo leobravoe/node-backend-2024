@@ -1,12 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Index de Produto</title>
 </head>
+
 <body>
     <h1>Mostrar a lista de todos produtos</h1>
     <a href="/">Voltar</a>
+
+
+    {{!-- Imprimindo um array de objetos de forma genérica --}}
+    {{#each produtos as |produto|}}
+        {{#each produto}}
+            <p>{{@key}}: {{this}}</p>
+        {{/each }}
+    {{/each }}
+
+
+
+
+
+
+
+
+
+
+
+    {{!-- Imprimindo um array de objetos quando se conhece a estrutura --}}
+    {{#each produtos}}
+        <p>id: {{this.id}}</p>
+        <p>numero: {{this.numero}}</p>
+        <p>nome: {{this.nome}}</p>
+        <p>preco: {{this.preco}}</p>
+        <p>TipoProduto_id: {{this.TipoProduto_id}}</p>
+        <p>ingredientes: {{this.ingredientes}}</p>
+        <p>dataAtualizacao: {{this.dataAtualizacao}}</p>
+        <p>dataCriacao: {{this.dataCriacao}}</p>
+    {{/each }}
 </body>
+
 </html>
