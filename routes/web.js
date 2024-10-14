@@ -7,13 +7,13 @@ router.get("/", (request, response) => {
 });
 
 router.get("/produto", async (request, response) => {
-    // const result = await DataBase.executeSQLQuery("SELECT * FROM Produto");
-    response.render("Produto/index");
+    const produtos = await DataBase.executeSQLQuery("SELECT * FROM Produto");
+    response.render("Produto/index", { produtos: produtos });
 });
 
 router.get("/tipoproduto", async (request, response) => {
-    // const result = await DataBase.executeSQLQuery("SELECT * FROM Produto");
-    response.render("TipoProduto/index");
+    const tipoProdutos = await DataBase.executeSQLQuery("SELECT * FROM TipoProduto");
+    response.render("TipoProduto/index", { tipoProdutos: tipoProdutos });
 });
 
 module.exports = router;
