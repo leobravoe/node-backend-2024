@@ -1,0 +1,18 @@
+{{!-- Create de Mesa --}}
+
+<div class="container">
+    <form method="post" action="/mesa">
+        <input type="hidden" name="_csrf" value="{{csrfToken}}">
+        <div class="mb-3">
+            <label for="id-input-id" class="form-label">ID</label>
+            <input type="text" class="form-control" id="id-input-id" value="#" disabled>
+        </div>
+        <div class="mb-3">
+            <label for="id-input-numero" class="form-label">Número</label>
+            <input type="text" class="form-control" id="id-input-numero" placeholder="Digite o número da Mesa. Ex: 1"
+                name="numero" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+        <a href="/mesa" class="btn btn-primary">Voltar</a>
+    </form>
+</div>

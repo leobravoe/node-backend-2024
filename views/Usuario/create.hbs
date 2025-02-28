@@ -1,0 +1,28 @@
+{{!-- Create de Usuario --}}
+
+<div class="container">
+    <form method="post" action="/usuario">
+        <input type="hidden" name="_csrf" value="{{csrfToken}}">
+        <div class="mb-3">
+            <label for="id-input-id" class="form-label">ID</label>
+            <input type="text" class="form-control" id="id-input-id" value="#" disabled>
+        </div>
+        <div class="mb-3">
+            <label for="id-input-nome" class="form-label">Nome</label>
+            <input type="text" class="form-control" id="id-input-nome"
+                placeholder="Digite o nome do usuário. Ex: Fulano" name="nome" required>
+        </div>
+        <div class="mb-3">
+            <label for="id-input-email" class="form-label">Email</label>
+            <input type="email" class="form-control" id="id-input-email"
+                placeholder="Digite o email do usuário. Ex: fulano@gmail.com" name="email" required>
+        </div>
+        <div class="mb-3">
+            <label for="id-input-senha" class="form-label">Senha</label>
+            <input type="password" class="form-control" id="id-input-senha"
+                placeholder="Digite a senha do usuário." name="senha" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+        <a href="/usuario" class="btn btn-primary">Voltar</a>
+    </form>
+</div>

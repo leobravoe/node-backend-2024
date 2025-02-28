@@ -1,0 +1,14 @@
+{
+    "server": {
+        "port": 5000
+    },
+    "db": {
+        "host": "localhost",
+        "database": "fornatto_db_2",
+        "user": "root",
+        "password": ""
+    },
+    "app": {
+        "secret": "690bf85b453d979993af64e22932c78492a8d77ccb9c8dc800c1f397fd33617e"
+    }
+}

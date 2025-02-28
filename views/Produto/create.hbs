@@ -1,0 +1,42 @@
+<div class="container">
+    <form method="POST" action="/produto">
+        <input type="hidden" name="_csrf" value="{{csrfToken}}">
+        <div class="my-3">
+            <label for="id-input-id" class="form-label">ID</label>
+            <input type="text" id="id-input-id" class="form-control" value="#" disabled>
+        </div>
+        <div class="my-3">
+            <label for="id-input-numero" class="form-label">Número</label>
+            <input type="text" name="numero" id="id-input-numero" class="form-control"
+                placeholder="Digite um numero para o produto. Ex: 1" required>
+        </div>
+        <div class="my-3">
+            <label for="id-input-nome" class="form-label">Nome</label>
+            <input type="text" name="nome" id="id-input-nome" class="form-control"
+                placeholder="Digite um nome para o produto. Ex: Pepperoni" required>
+        </div>
+        <div class="my-3">
+            <label for="id-input-preco" class="form-label">Preço</label>
+            <input type="text" name="preco" id="id-input-preco" class="form-control"
+                placeholder="Digite o preço para o produto. Ex: 50.50" required>
+        </div>
+        <div class="my-3">
+            <label for="id-select-TipoProduto_id" class="form-label">Tipo</label>
+            <select name="TipoProduto_id" id="id-select-TipoProduto_id" class="form-select">
+                {{#each tipoProdutos}}
+                <option value="{{this.id}}">{{this.descricao}}</option>
+                {{/each}}
+            </select>
+        </div>
+        <div class="my-3">
+            <label for="id-input-ingredientes" class="form-label">Ingredientes</label>
+            <input type="text" name="ingredientes" id="id-input-ingredientes" class="form-control"
+                placeholder="Digite os ingredientes para o produto. Ex: Massa de pizza, molho de tomate, queijo, ..."
+                required>
+        </div>
+        <div class="my-3">
+            <button type="submit" class="btn btn-primary">Enviar</button>
+            <a href="/produto" class="btn btn-primary">Voltar</a>
+        </div>
+    </form>
+</div>

@@ -1,0 +1,21 @@
+{{!-- Edit de TipoProduto --}}
+
+<div class="container">
+    <form method="post" action="/tipoproduto/{{tipoProduto.id}}?_method=put">
+        <input type="hidden" name="_csrf" value="{{csrfToken}}">
+        <div class="my-3">
+            <label for="id-input-id" class="form-label">ID</label>
+            <input type="text" id="id-input-id" value="{{tipoProduto.id}}" class="form-control" disabled>
+        </div>
+        <div class="my-3">
+            <label for="id-input-descricao" class="form-label">Descrição</label>
+            <input type="text" name="descricao" id="id-input-descricao" value="{{tipoProduto.descricao}}"
+                class="form-control" placeholder="Digite um descricao para o produto. Ex: {{tipoProduto.descricao}}"
+                required>
+        </div>
+        <div class="my-3">
+            <button type="submit" class="btn btn-primary">Enviar</button>
+            <a href="/tipoproduto" class="btn btn-primary">Voltar</a>
+        </div>
+    </form>
+</div>

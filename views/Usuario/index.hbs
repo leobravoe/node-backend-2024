@@ -1,0 +1,38 @@
+{{!-- Index de Usuario --}}
+
+<div class="container">
+    <a href="/" class="btn btn-primary">Voltar</a>
+    {{#if usuario }}
+        <a href="/usuario/{{usuario.id}}" class="btn btn-primary">Mostrar</a>
+        <a href="/usuario/{{usuario.id}}/edit" class="btn btn-secondary">Editar</a>
+        <a href="/usuario/{{usuario.id}}/editemailpassword" class="btn btn-secondary">Editar Email e Senha</a>
+        <form class="d-inline" method="post" action="/usuario/logout">
+            <input type="hidden" name="_csrf" value="{{csrfToken}}">
+            <button type="submit" class="btn btn-warning">Logout</button>
+        </form>
+        <a href="#" class="btn btn-danger" onclick="deleteResource({{usuario.id}})">Apagar Usuário</a>
+        <p>Usuário conectado id: {{usuario.id}}</p>
+        <p>Usuário conectado nome: {{usuario.nome}}</p>
+        <p>Usuário conectado email: {{usuario.email}}</p>
+    {{else}}
+        <a href="/usuario/create" class="btn btn-primary">Criar usuário</a>
+        <a href="/usuario/login" class="btn btn-primary">Login</a>
+    {{/if}}
+
+</div>
+
+<script>
+    async function deleteResource(id) {
+        if (confirm(`Deseja remover o recurso de id = ${id}`)) {
+            const response = await fetch(`/usuario/${id}`, {
+                method: "DELETE",
+                headers: {
+                    "X-CSRF-Token": "{{csrfToken}}"
+                }
+            });
+            if (response.redirected) {
+                window.location.href = response.url;
+            }
+        }
+    }
+</script>

@@ -1,0 +1,40 @@
+{{!-- Show de Produto --}}
+
+<div class="container">
+    <div class="my-3">
+        <label for="id-input-id" class="form-label">ID</label>
+        <input type="text" id="id-input-id" value="{{produto.id}}" class="form-control" disabled>
+    </div>
+    <div class="my-3">
+        <label for="id-input-numero" class="form-label">Número</label>
+        <input type="text" id="id-input-numero" value="{{produto.numero}}" class="form-control" disabled>
+    </div>
+    <div class="my-3">
+        <label for="id-input-nome" class="form-label">Nome</label>
+        <input type="text" id="id-input-nome" value="{{produto.nome}}" class="form-control" disabled>
+    </div>
+    <div class="my-3">
+        <label for="id-input-preco" class="form-label">Preço</label>
+        <input type="text" id="id-input-preco" value="{{produto.preco}}" class="form-control" disabled>
+    </div>
+    <div class="my-3">
+        <label for="id-input-TipoProduto_id" class="form-label">Tipo</label>
+        <input type="text" id="id-input-TipoProduto_id" value="{{produto.descricao}}" class="form-control" disabled>
+    </div>
+    <div class="my-3">
+        <label for="id-input-ingredientes" class="form-label">Ingredientes</label>
+        <input type="text" id="id-input-ingredientes" value="{{produto.ingredientes}}" class="form-control" disabled>
+    </div>
+    <div class="my-3">
+        <label for="id-input-dataAtualizacao" class="form-label">Data Atualização</label>
+        <input type="text" id="id-input-dataAtualizacao" value="{{produto.dataAtualizacao}}" class="form-control"
+            disabled>
+    </div>
+    <div class="my-3">
+        <label for="id-input-dataCriacao" class="form-label">Data Criação</label>
+        <input type="text" id="id-input-dataCriacao" value="{{produto.dataCriacao}}" class="form-control" disabled>
+    </div>
+    <div class="my-3">
+        <a href="/produto" class="btn btn-primary">Voltar</a>
+    </div>
+</div>

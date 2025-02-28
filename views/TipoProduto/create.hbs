@@ -1,0 +1,18 @@
+{{!-- Create de TipoProduto --}}
+
+<div class="container">
+    <form method="post" action="/tipoproduto">
+        <input type="hidden" name="_csrf" value="{{csrfToken}}">
+        <div class="mb-3">
+            <label for="id-input-id" class="form-label">ID</label>
+            <input type="text" class="form-control" id="id-input-id" value="#" disabled>
+        </div>
+        <div class="mb-3">
+            <label for="id-input-descricao" class="form-label">Descrição</label>
+            <input type="text" class="form-control" id="id-input-descricao"
+                placeholder="Digite a descrição para o TipoProduto. Ex: Pizza" name="descricao" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+        <a href="/tipoproduto" class="btn btn-primary">Voltar</a>
+    </form>
+</div>
