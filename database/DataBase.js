@@ -46,6 +46,43 @@ class DataBase {
         console.log('✅ Script SQL executado com sucesso.');
         connection.end();
     }
+
+    /**
+     * Retorna TODAS as colunas de uma tabela (em ordem).
+     * @param {string} tableName
+     * @returns {Promise<string[]>}
+     */
+    static async getTableColumns(tableName) {
+        const dbName = config.get("db.database");
+        const sql = `
+                    SELECT COLUMN_NAME
+                        FROM information_schema.COLUMNS
+                    WHERE TABLE_SCHEMA = ?
+                        AND TABLE_NAME   = ?
+                    ORDER BY ORDINAL_POSITION;
+                    `;
+        const rows = await this.executeSQLQuery(sql, [dbName, tableName]);
+        return rows.map((r) => r.COLUMN_NAME);
+    }
+
+    /**
+     * Retorna as colunas que compõem a PK (em ordem).
+     * @param {string} tableName
+     * @returns {Promise<string[]>}
+     */
+    static async getPrimaryKeyColumns(tableName) {
+        const dbName = config.get("db.database");
+        const sql = `
+                    SELECT COLUMN_NAME
+                        FROM information_schema.KEY_COLUMN_USAGE
+                    WHERE TABLE_SCHEMA   = ?
+                        AND TABLE_NAME     = ?
+                        AND CONSTRAINT_NAME = 'PRIMARY'
+                    ORDER BY ORDINAL_POSITION;
+                    `;
+        const rows = await this.executeSQLQuery(sql, [dbName, tableName]);
+        return rows.map((r) => r.COLUMN_NAME);
+    }
 };
 
 module.exports = DataBase;
