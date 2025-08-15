@@ -18,9 +18,9 @@ class ApiUsuarioController {
     async apiGetOne(req, res) {
         try {
             const usuario = await UsuarioModel.findOne(req.params.usuarioId);
-            if(!usuario)
+            if (!usuario)
                 return res.status(404).json({ error: "Usuario não encontrado." });
-            if(req.usuario.id != usuario.id)
+            if (req.usuario.id != usuario.id)
                 return res.status(401).json({ error: `O id = ${req.params.usuarioId} não pertence ao usuário autenticado.` });
             return res.status(200).json(usuario);
         } catch (error) {
@@ -57,9 +57,9 @@ class ApiUsuarioController {
     async apiUpdate(req, res) {
         try {
             const usuario = await UsuarioModel.findOne(req.params.usuarioId);
-            if(!usuario)
+            if (!usuario)
                 return res.status(404).json({ error: "Usuario não encontrado." });
-            if(req.usuario.id != usuario.id)
+            if (req.usuario.id != usuario.id)
                 return res.status(401).json({ error: `O id = ${req.params.usuarioId} não pertence ao usuário autenticado.` });
             usuario.nome = req.body.usuario.nome;
             usuario.email = req.body.usuario.email;
@@ -81,9 +81,9 @@ class ApiUsuarioController {
     async apiDestroy(req, res) {
         try {
             const usuario = await UsuarioModel.findOne(req.params.usuarioId);
-            if(!usuario)
+            if (!usuario)
                 return res.status(404).json({ error: "Usuario não encontrado." });
-            if(req.usuario.id != usuario.id)
+            if (req.usuario.id != usuario.id)
                 return res.status(401).json({ error: `O id = ${req.params.usuarioId} não pertence ao usuário autenticado.` });
             const result = await usuario.delete();
             return res.status(200).json(result);
@@ -96,27 +96,31 @@ class ApiUsuarioController {
      * Processa o login do usuário.
      */
     async apiLogin(req, res) {
-        const { email, senha } = req.body.usuario;
+        try {
+            const { email, senha } = req.body.usuario;
 
-        // Valida se os campos foram preenchidos
-        if (!email || !senha) {
-            return res.status(400).json({ message: "Usuário e senha são obrigatórios." });
+            // Valida se os campos foram preenchidos
+            if (!email || !senha) {
+                return res.status(400).json({ message: "Usuário e senha são obrigatórios." });
+            }
+
+            // Busca o usuário no banco de dados
+            const usuario = await UsuarioModel.validateUser(email, senha);
+            if (!usuario) {
+                return res.status(401).json({ message: "Credenciais inválidas." });
+            }
+
+            // Gera o token JWT
+            const token = jwt.sign(
+                { id: usuario.id, usuario: usuario.nome },
+                process.env.JWT_SECRET || config.get("app.secret"),
+                { expiresIn: "1h" } // Token expira em 1 hora
+            );
+
+            return res.json({ token });
+        } catch (error) {
+            return res.status(500).json(error);
         }
-
-        // Busca o usuário no banco de dados
-        const usuario = await UsuarioModel.validateUser(email, senha);
-        if (!usuario) {
-            return res.status(401).json({ message: "Credenciais inválidas." });
-        }
-
-        // Gera o token JWT
-        const token = jwt.sign(
-            { id: usuario.id, usuario: usuario.nome },
-            process.env.JWT_SECRET || config.get("app.secret"),
-            { expiresIn: "1h" } // Token expira em 1 hora
-        );
-
-        return res.json({ token });
     }
 }
 
